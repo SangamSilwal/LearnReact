@@ -1,25 +1,21 @@
-import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { About } from "../pages/about.jsx";
+import { Product } from "../pages/product.jsx";
+import { Contact } from "../pages/contact.jsx";
+import { Home } from "../pages/home.jsx";
+import { NavBar } from "./components/navBar.jsx";
 
 const App = ()=> {
-   const [username ,setUsername] = useState('')
-
-   const formHandler = (e)=>{
-    e.preventDefault();
-    console.log(username);
-    setUsername('')
-   }
+  
   return (
     <div>
-      <form onSubmit={(e)=>{
-        formHandler(e)
-      }}>
-        <input value={username} onChange={
-          (e)=>{
-            setUsername(e.target.value)
-          }
-        } type="text" />
-        <button>Submit</button>
-      </form>
+      <NavBar/>
+      <Routes>
+        <Route path='/About' element= {<About/>} />
+        <Route path="/product" element={<Product/>}/>
+        <Route path= "/contact" element={<Contact/>}/>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
     </div>
   )
 }
